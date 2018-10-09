@@ -1,0 +1,39 @@
+version: '2'
+
+
+networks:
+
+  lan_network:
+    driver: bridge
+
+
+
+volumes:
+  cass_volume:
+
+
+
+
+
+services:
+
+ cass1:
+  hostname: cass1
+  container_name: cass1
+  image: cassandra:2.2
+  volumes:
+    - cass_volume:/var/log/cassandra-shared
+  networks:
+    - lan_network
+
+ cass2:
+  hostname: cass2
+  container_name: cass2
+  image: cassandra:2.2
+  volumes:
+    - cass_volume:/var/log/cassandra-shared
+  networks:
+    - lan_network
+
+
+
